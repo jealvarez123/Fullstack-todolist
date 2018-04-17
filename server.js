@@ -34,6 +34,26 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
+app.get('/api/toDoList', function (req, res) {
+  // send all books as JSON response
+  db.Todo.find(function(err, toDoList){
+    if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    res.json(toDoList);
+  });
+});
+
+
+app.post('/api/books', function (req, res) {
+  // create new book with form data (`req.body`)
+  console.log('books create', req.body);
+  var newBook = req.body;
+  newBook._id = newBookUUID++;
+  books.push(newBook);
+  res.json(newBook);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

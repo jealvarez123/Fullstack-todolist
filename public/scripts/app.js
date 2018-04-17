@@ -14,7 +14,7 @@ $(document).ready(function(){
   });
   });
 var on = () => {
-  console.log('Ajax call');
+  console.log($todoList);
 }
 
 
