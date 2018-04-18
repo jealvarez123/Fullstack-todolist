@@ -11,7 +11,7 @@ var logger = require('morgan');
 
 var Todo = require('./models/todo');
 var app = express();
-
+  bodyParser = require('body-parser');
 var db = require('./models')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,13 +46,13 @@ app.get('/api/toDoList', function (req, res) {
 });
 
 
-app.post('/api/books', function (req, res) {
+app.post('/api/toDoList', function (req, res) {
   // create new book with form data (`req.body`)
-  console.log('books create', req.body);
-  var newBook = req.body;
-  newBook._id = newBookUUID++;
-  books.push(newBook);
-  res.json(newBook);
+  // console.log('books create', req.body);
+  // var newlist = req.body;
+  // newBook._id = newBookUUID++;
+  // books.push(newBook);
+  res.json(req.body);
 });
 
 // catch 404 and forward to error handler
